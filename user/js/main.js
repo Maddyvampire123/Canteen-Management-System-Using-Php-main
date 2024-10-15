@@ -1,4 +1,4 @@
-/*
+
 (function ($) {
   // USE STRICT
   "use strict";
@@ -1454,7 +1454,7 @@
           if (!executed) {
             executed = true;
             /*progress bar*/
-         /*   that.progressbar({
+           that.progressbar({
               update: function (current_percentage, $this) {
                 $this.find('.js-value').html(current_percentage + '%');
               }
@@ -1668,4 +1668,3 @@
   }
 
 })(jQuery);
-/*
