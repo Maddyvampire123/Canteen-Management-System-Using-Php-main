@@ -154,27 +154,7 @@ body{
                             <a href="order_prompt.php">
                                 <i class="far fa-bell"></i>Order Prompt</a>
                         </li>
-						<li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-desktop"></i>Services</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-									<a href="#">
-									<i class="far fa-check-square"></i>About-Us</a>
-								</li>
-								<li>
-									<a href="../contact.html">
-									<i class="far fa-check-square"></i>Contact-Us</a>
-								</li>
-								<li>
-									<a href="#">
-									<i class="far fa-check-square"></i>Feed Back</a>
-								</li>
-								<li>
-									<a href="#">
-									<i class="far fa-check-square"></i>Help Center</a>
-								</li>
-                            </ul>
+						            </ul>
                         </li>
 					</ul>
                 </nav>
