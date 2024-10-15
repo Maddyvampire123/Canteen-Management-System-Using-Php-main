@@ -98,7 +98,7 @@ body{
 }
 
 .bg {
-    /* The image used */"images\icon\amritalogo.png");
+    /* The image used */"images\icon\cps1.png");
 
     /* Full height */
     height: 100%;
@@ -120,7 +120,7 @@ body{
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="#">
-                    <img src="images\icon\amritalogo.png" alt="Canteen Management System" />
+                    <img src="images\icon\cps1.png" alt="Canteen Management System" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -287,108 +287,22 @@ body{
                     <div class="container-fluid">
 					
     <table border="0" align='left' width="55%">
-		<tr align='left'><th colspan='7' ><BR>&nbsp;Welcome,<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You will find the latest information about us on this page. Our company is constantly evolving and growing. We provide wide range of services. Our mission is to provide best solution that helps everyone. If you want to contact us, please fill the contact form on our page. </th></tr>
+		<tr align='left'><th colspan='7' ><BR>&nbsp;Welcome to the Amrita College Canteen,<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+<br>
+        We're delighted to have you here. Whether you're tracking your daily meals, checking out the latest menu. Stay nourished, stay healthy, and enjoy your time with us!</th></tr>
 	</table>
 
 					
-    <table border="3" align='right' width="40%">
-
-	<tr align='center'><th colspan='7' > August, 2020</th></tr>
-     <tr align="center"><th > Sun</th> <th>Mon</th> <th>Tue</th> <th>Wed</th> <th>Thu</th> <th>Fri</th> <th>Sat</th> </tr>
-	<?php
-	$date=1;
-	$cdate=date("Y/m/d");
-	$cdd=$cdate[8].$cdate[9];
-	//echo ("<td></td> <td></td> <td></td> ");
-	while($date<31) 
-	{
-		echo "<tr align='center'>";
-		for($j=0;$j<7;$j++)
-		{	
-			if($j==0 && $date==1)
-			{
-				echo ("<td ></td> ");
-				//echo ("<td></td> <td></td> <td></td> ");
-				continue;
-			}
-			if($j==1 && $date==1)
-			{
-				echo ("<td></td> ");
-				//echo ("<td></td> <td></td> <td></td> ");
-				continue;
-			}
-			if($j==2 && $date==1)
-			{
-				echo ("<td></td> ");
-				//echo ("<td></td> <td></td> <td></td> ");
-				continue;
-			}
-			if($j==3 && $date==1)
-			{
-				echo ("<td></td> ");
-				//echo ("<td></td> <td></td> <td></td> ");
-				continue;
-			}
-            if($j==4 && $date==1)
-            {
-                echo ("<td></td> ");
-                //echo ("<td></td> <td></td> <td></td> ");
-                continue;
-            }
-            if($j==5 && $date==1)
-            {
-                echo ("<td></td> ");
-                //echo ("<td></td> <td></td> <td></td> ");
-                continue;
-            }
-			if( $date<=31)
-			{
-				if($cdd==$date)
-				{
-					echo ("<td bgcolor='yellow'><b>$date</b></td>");
-					$date++;
-				}
-				else if($j==0)
-				{
-				echo "<td ><font color='red'><b>$date</b></font></td>";
-				$date++;
-				}
-				else
-				{
-					echo "<td >$date</td>";
-					$date++;
-				}
-				if($date==31)
-				{
-					echo "<td >$date</td>";
-                    echo "<td >&nbsp;</td>";
-                    echo "<td >&nbsp;</td>";
-                    echo "<td >&nbsp;</td>";
-                    echo "<td >&nbsp;</td>";
-                    echo "<td >&nbsp;</td>";
-					$date++;
-				}
-                //else if ($date>31)
-                //{
-                //    echo "<td >&nbsp;</td>";
-                //    $date++;
-                //}
-			
-			}
-		}
-		echo "</tr>";
-	}
-?>
-</table>
+    
 
 <BR><BR><BR><Br><BR><BR><BR><Br><BR>
 <div>
 <center>
 <div class="w3-content w3-section" >
-  <img class="mySlides" src="image1.jpg" alt='img1' width="500" height="200" border="5">
-  <img class="mySlides" src="image2.jpg" alt='img2' width="500" height="200" border="5">
-  <img class="mySlides" src="image4.jpg" alt='img4' width="500" height="200" border="5">
-  <img class="mySlides" src="image5.jpg" alt='img5' width="500" height="200" border="5">
+  <img class="mySlides" src="image1.png" alt='img1' width="500" height="200" border="5">
+ 
   
 </div>
 </center>
