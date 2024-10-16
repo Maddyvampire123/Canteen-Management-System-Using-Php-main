@@ -158,26 +158,7 @@ body{
                             <a href="notifications.php">
                                 <i class="far fa-bell"></i>Notifications</a>
                         </li>
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-desktop"></i>Services</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a href="#">
-                                    <i class="far fa-check-square"></i>About-Us</a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                    <i class="far fa-check-square"></i>Contact-Us</a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                    <i class="far fa-check-square"></i>Feed Back</a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                    <i class="far fa-check-square"></i>Help Center</a>
-                                </li>
+                       
                             </ul>
                         </li>
 					</ul>
