@@ -40,42 +40,36 @@ if (count($_POST) > 0) {
     <div id="bg"></div>
 
     <form action="" method="post">
-        <label for=""></label>
         <input type="text" name="id" placeholder="Username" class="email" required="required">
 
-        <label for=""></label>
         <input type="text" name="fname" placeholder="First Name" class="email" required="required">
 
-        <label for=""></label>
         <input type="text" name="lname" placeholder="Last Name" class="email" required="required">
 
-        <label for=""></label>
         <input type="date" name="dob" placeholder="Date of Birth" class="email" required="required">
 
-        <label for=""></label>
         <input type="password" name="pwd" placeholder="Password" class="pass" required="required">
 
-        <label for=""></label>
         <input type="text" name="phone" placeholder="Phone" class="email" required="required">
 
-        <label for=""></label>
         <input type="email" name="mail" placeholder="Email" class="email" required="required">
 
         <button type="submit">Create an account</button>
         <br><br>
         <div class="message"> <?php if($message != "") { echo $message; } ?> </div>
     </form>
+
     <script src="js/index.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script>
     function validateForm() {
-        let id = document.forms["signupForm"]["id"].value;
-        let fname = document.forms["signupForm"]["fname"].value;
-        let lname = document.forms["signupForm"]["lname"].value;
-        let dob = document.forms["signupForm"]["dob"].value;
-        let pwd = document.forms["signupForm"]["pwd"].value;
-        let phone = document.forms["signupForm"]["phone"].value;
-        let mail = document.forms["signupForm"]["mail"].value;
+        let id = document.forms[0]["id"].value;
+        let fname = document.forms[0]["fname"].value;
+        let lname = document.forms[0]["lname"].value;
+        let dob = document.forms[0]["dob"].value;
+        let pwd = document.forms[0]["pwd"].value;
+        let phone = document.forms[0]["phone"].value;
+        let mail = document.forms[0]["mail"].value;
         let message = "";
 
         // Username validation
@@ -84,7 +78,7 @@ if (count($_POST) > 0) {
         }
 
         // First name and Last name validation
-        if (fname == "" || lname == "") {
+        if (fname.trim() === "" || lname.trim() === "") {
             message += "First Name and Last Name are required.\n";
         }
 
@@ -102,24 +96,26 @@ if (count($_POST) > 0) {
         // Phone validation (only numbers, minimum 10 digits)
         const phonePattern = /^[0-9]{10,}$/;
         if (!phonePattern.test(phone)) {
-            phone.textContext = "Phone number must be at least 10 digits long and contain only numbers.\n"; 
+            message += "Phone number must be at least 10 digits long and contain only numbers.\n"; 
         }
 
-        // Email validation (built-in HTML5 will handle basic format)
-        if (!mail.includes("@") || !mail.includes(".")) {
+        // Email validation
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailPattern.test(mail)) {
             message += "Please enter a valid email address.\n";
         }
 
+        // Display validation messages
         if (message) {
             alert(message);
             return false; // Prevent form submission
         }
-        return true;
+        return true; // Allow form submission
     }
-</script>
 
-
-
+    // Attach validateForm to the form's submit event
+    document.forms[0].onsubmit = validateForm;
+    </script>
 
 </body>
 </html>

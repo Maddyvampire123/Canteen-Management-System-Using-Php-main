@@ -97,6 +97,9 @@ if(isset($_SESSION["id"]))
         <button type="button" class="btn" onclick="window.location.href='signup.php'">Sign Up</button>
         <br><br>
 
+        <button type="button" class="btn" onclick="window.location.href='signup.php'">Admin Login</button>
+        <br><br>
+
         <div class="message"> <?php if($message != "") { echo $message; } ?></div>
     </form>
 
