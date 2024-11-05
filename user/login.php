@@ -96,7 +96,7 @@ if(isset($_SESSION["id"]))
         <!-- Styled Signup button -->
         <button type="button" class="btn" onclick="window.location.href='signup.php'">Sign Up</button>
         <br>
-        <button type="button" class="btn" onclick="window.location.href='signup.php'">Admin Login</button>
+        <button type="button" class="btn" onclick="window.location.href='adminlog.php'">Admin Login</button>
         <br><br>
 
         <div class="message"> <?php if($message != "") { echo $message; } ?></div>
