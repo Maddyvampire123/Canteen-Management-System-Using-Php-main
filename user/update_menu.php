@@ -228,25 +228,13 @@ body{
                             <div>
                                 <div class='account-wrap'>
                                     <div class='account-item clearfix js-item-menu'>
-                                        <div class='image'>
-                                            <img src='uploads/$photo' alt='$user' width='30' height='30'/>
-                                        </div>
+                                        
                                         <div class='content'>
                                             <a class='js-acc-btn' href='#'>$user</a>
                                         </div>
                                         <div class='account-dropdown js-dropdown'>
                                             <div class='info clearfix'>
-                                                <div class='image'>
-                                                    <a href='#'>
-                                                        <img src='uploads/$photo' alt='$user' />
-                                                    </a>
-                                                </div>
-                                                <div class='content'>
-                                                    <h5 class='name'>
-                                                        <a href='#'>$user</a>
-                                                    </h5>
-                                                    <span class='email'>$email</span>
-                                                </div>
+                                           
                                             </div>";
  ?>
 
