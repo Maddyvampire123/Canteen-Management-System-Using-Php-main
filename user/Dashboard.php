@@ -205,7 +205,7 @@
                                 <div>
                                     <div class='account-wrap'>
                                         <div class='account-item clearfix js-item-menu'>
-                                            
+                                                
                                             <div class='content'>
                                                 <a class='js-acc-btn' href='#'>$user</a>
                                             </div>
