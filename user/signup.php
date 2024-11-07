@@ -1,29 +1,32 @@
 <?php
 session_start();
 $message = "";
+
 if (count($_POST) > 0) {
     include('Connection.php');
-    
+
     // Check if the username already exists
     $result = mysqli_query($con, "SELECT * FROM users WHERE User_Id = '" . $_POST["id"] . "'");
     $check = mysqli_num_rows($result);
-    
+
     if ($check > 0) {
         $message = "Username already exists!";
     } else {
-        // Insert new user into the database without the Wallet field
-        $sql = "INSERT INTO users (User_Id, First_Name, Last_Name, Dob, Password, Phone, Mail)
-                VALUES ('" . $_POST["id"] . "', '" . $_POST["fname"] . "', '" . $_POST["lname"] . "', '" . $_POST["dob"] . "', '" . $_POST["pwd"] . "', '" . $_POST["phone"] . "', '" . $_POST["mail"] . "')";
+        // Insert new user into the database, setting Wallet to 0.00 by default
+        $sql = "INSERT INTO users (User_Id, First_Name, Last_Name, Dob, Password, Phone, Mail, Wallet)
+                VALUES ('" . $_POST["id"] . "', '" . $_POST["fname"] . "', '" . $_POST["lname"] . "', '" . $_POST["dob"] . "', '" . $_POST["pwd"] . "', '" . $_POST["phone"] . "', '" . $_POST["mail"] . "', 0.00)";
         
         if (mysqli_query($con, $sql)) {
             $_SESSION["id"] = $_POST["id"];
-            header("Location:Dashboard.php");
+            header("Location: Dashboard.php");
+            exit; // Ensure script stops after redirection
         } else {
-            $message = "Error in registration!";
+            $message = "Error in registration: " . mysqli_error($con);
         }
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
