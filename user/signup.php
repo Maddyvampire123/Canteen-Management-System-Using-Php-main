@@ -97,9 +97,9 @@ if (count($_POST) > 0) {
         }
 
         // Phone validation (only numbers, minimum 10 digits)
-        const phonePattern = /^[0-9]{10,}$/;
+        const phonePattern = /^[0-9]{10}$/;
         if (!phonePattern.test(phone)) {
-            message += "Phone number must be at least 10 digits long and contain only numbers.\n"; 
+            message += "Phone number must be only 10 digits long and contain only numbers.\n"; 
         }
 
         // Email validation
