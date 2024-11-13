@@ -165,10 +165,7 @@ body{
                     <div class="container-fluid">
                         <div class="header-wrap">
                             <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for products &amp; price..." />
-                                <button class="au-btn--submit" type="submit">
-                                    <i class="zmdi zmdi-search"></i>
-                                </button>
+                                
                             </form>
 							<div class="title-3" align='right'>
 							
@@ -282,7 +279,7 @@ if($_SESSION["id"])
 			</div>
 			<!-- END MAIN CONTENT-->
 			
-            <!-- END PAGE CONTAINER-->
+            <!-- END PAGE CONTAINER-->x
         </div>
 		
 

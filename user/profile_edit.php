@@ -159,26 +159,7 @@ body{
                             <a href="notifications.php">
                                 <i class="far fa-bell"></i>Notifications</a>
                         </li>
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-desktop"></i>Services</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a href="#">
-                                    <i class="far fa-check-square"></i>About-Us</a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                    <i class="far fa-check-square"></i>Contact-Us</a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                    <i class="far fa-check-square"></i>Feed Back</a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                    <i class="far fa-check-square"></i>Help Center</a>
-                                </li>
+                       
                             </ul>
                         </li>
 					</ul>
@@ -197,10 +178,7 @@ body{
                     <div class="container-fluid">
                         <div class="header-wrap">
                             <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for products &amp; price..." />
-                                <button class="au-btn--submit" type="submit">
-                                    <i class="zmdi zmdi-search"></i>
-                                </button>
+                            
                             </form>
 							<div class="title-3" align='right'>
 							
@@ -239,19 +217,13 @@ body{
                             <div>
                                 <div class='account-wrap'>
                                     <div class='account-item clearfix js-item-menu'>
-                                        <div class='image'>
-                                            <img src='uploads/$photo' alt='$user' width='30' height='30'/>
-                                        </div>
+                                       
                                         <div class='content'>
                                             <a class='js-acc-btn' href='#'>$user</a>
                                         </div>
                                         <div class='account-dropdown js-dropdown'>
                                             <div class='info clearfix'>
-                                                <div class='image'>
-                                                    <a href='#'>
-                                                        <img src='uploads/$photo' alt='$user' />
-                                                    </a>
-                                                </div>
+                                             
                                                 <div class='content'>
                                                     <h5 class='name'>
                                                         <a href='#'>$user</a>
@@ -324,10 +296,7 @@ body{
                     <th>Last Name</th>
                     <td ><input style="width: 100%;" type="text" name="Last_Name" value="<?php echo $row['Last_Name'] ;?>"></td>
                     </tr>
-                    <tr>
-                    <th>Date of Birth</th>
-                    <td ><input style="width: 100%;" type="date" name="Dob" value="<?php echo $row['Dob'] ;?>"></td>
-                    </tr>
+                   
                     <tr>
                     <th>Phone</th>
                     <td ><input style="width: 100%;" type="text" name="Phone" value="<?php echo $row['Phone'] ;?>"></td>

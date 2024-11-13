@@ -177,10 +177,7 @@ body{
                     <div class="container-fluid">
                         <div class="header-wrap">
                             <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for products &amp; price..." />
-                                <button class="au-btn--submit" type="submit">
-                                    <i class="zmdi zmdi-search"></i>
-                                </button>
+                              
                             </form>
 							<div class="title-3" align='right'>
 							
@@ -219,19 +216,13 @@ body{
                             <div>
                                 <div class='account-wrap'>
                                     <div class='account-item clearfix js-item-menu'>
-                                        <div class='image'>
-                                            <img src='uploads/$photo' alt='$user' width='30' height='30'/>
-                                        </div>
+                                    
                                         <div class='content'>
                                             <a class='js-acc-btn' href='#'>$user</a>
                                         </div>
                                         <div class='account-dropdown js-dropdown'>
                                             <div class='info clearfix'>
-                                                <div class='image'>
-                                                    <a href='#'>
-                                                        <img src='uploads/$photo' alt='$user' />
-                                                    </a>
-                                                </div>
+                                            
                                                 <div class='content'>
                                                     <h5 class='name'>
                                                         <a href='#'>$user</a>
@@ -361,6 +352,8 @@ body{
 
     <!-- Main JS-->
     <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 <script type="text/javascript">
   function Calc()
@@ -392,61 +385,99 @@ body{
 
     ?>
   }
-  function Confirm(id)
-  {
+  function Confirm(id) {
+    // PHP Block - Fetch Menu Items and Initialize Order Details
     <?php
     include('Connection.php');
-    $sql="SELECT * FROM menu WHERE Item_Stock>0";
-    $result1 = mysqli_query($con,$sql);
-    $i=1;
+    $sql = "SELECT * FROM menu WHERE Item_Stock > 0";
+    $result1 = mysqli_query($con, $sql);
+    $i = 1;
     date_default_timezone_set('Asia/Kolkata');
-    $Date=date("d/m/Y");
-    $Time=date("h:i:s A");
-    $tid=rand(1000,1000000);
-    $orid="od_".$user.$tid;
-    $trd="tr_".$user.$tid;
-    while($row = mysqli_fetch_array($result1)) {
-        if(!empty($_POST['check_list'])) {
-            foreach($_POST['check_list'] as $check) {
-                if ($row['Item_Name'] == $check ) {
-                $itemcount=1;
-                $total=$itemcount*$row['Item_Price'];
-                $sql="INSERT INTO `orders` (`Order_Id`, `Date`, `Time`, `User_Id`, `Item_Name`, `Item_Price`, `Item_Count`, `Total`) VALUES ('$orid', '$Date', '$Time', '$user', '".$row['Item_Name']."', '".$row['Item_Price']."', '$itemcount', '$total')";
-                mysqli_query($con,$sql);
-                $text="Purchased $itemcount $check..";
-                $sql1="INSERT INTO `transaction` (`trans_Id`, `User_Id`, `trans_Date`, `trans_Time`, `Details`, `Amount`) VALUES('$trd','$user','$Date','$Time','$text','$total')";
-                mysqli_query($con,$sql1);
-                mysqli_query($con,"UPDATE `users` SET Wallet = Wallet-$total WHERE `User_Id` = '$user';");
-                mysqli_query($con,"UPDATE `menu` SET Item_Stock = Item_Stock-$itemcount WHERE `Item_Name` ='$check' ");
-                $i++;
+    $Date = date("d/m/Y");
+    $Time = date("h:i:s A");
+    $tid = rand(1000, 1000000);
+    $orid = "od_" . $user . $tid;
+    $trd = "tr_" . $user . $tid;
+
+    while ($row = mysqli_fetch_array($result1)) {
+        if (!empty($_POST['check_list'])) {
+            foreach ($_POST['check_list'] as $check) {
+                if ($row['Item_Name'] == $check) {
+                    $itemcount = 1;
+                    $total = $itemcount * $row['Item_Price'];
+                    $sql = "INSERT INTO `orders` (`Order_Id`, `Date`, `Time`, `User_Id`, `Item_Name`, `Item_Price`, `Item_Count`, `Total`) VALUES ('$orid', '$Date', '$Time', '$user', '" . $row['Item_Name'] . "', '" . $row['Item_Price'] . "', '$itemcount', '$total')";
+                    mysqli_query($con, $sql);
+                    $text = "Purchased $itemcount $check..";
+                    $sql1 = "INSERT INTO `transaction` (`trans_Id`, `User_Id`, `trans_Date`, `trans_Time`, `Details`, `Amount`) VALUES('$trd','$user','$Date','$Time','$text','$total')";
+                    mysqli_query($con, $sql1);
+                    mysqli_query($con, "UPDATE `users` SET Wallet = Wallet-$total WHERE `User_Id` = '$user';");
+                    mysqli_query($con, "UPDATE `menu` SET Item_Stock = Item_Stock-$itemcount WHERE `Item_Name` = '$check'");
+                    $i++;
                 }
             }
         }
     }
-
     ?>
-    $.ajax({
-          type: "POST",
-          url: "confirm.php",
-          async: false,
-          data: {
-            id : id,
-            Confirm: 1,
-          },
-          success: function(){
-            
-          },
- 
-        complete: function() {
-            // success alerts
-            alert('Your oder has been placed');
-            window.location.href='orders.php';
 
-        }
+    // Razorpay Payment Setup
+    var totalAmount = document.getElementById('sumtotal').value;
+    if (totalAmount <= 0) {
+        alert("Please select items to purchase.");
+        return;
+    }
+
+    var options = {
+        "key": "rzp_test_mVoApknJRKRs0w", // Replace with your Razorpay Key ID
+        "amount": totalAmount * 100, // in paise
+        "currency": "INR",
+        "name": "Amrita Canteen Payment",
+        "description": "Purchase Order",
+        "image": "images/icon/cps1.png", // Replace with your logo URL
+        "handler": function (response) {
+            // On successful payment, run AJAX to complete order and transaction
+            $.ajax({
+    type: "POST",
+    url: "confirm.php",
+    async: false,
+    data: {
+        id: id,
+        Confirm: 1,
+        payment_id: response.razorpay_payment_id,
+        total: totalAmount
+    },
+    success: function () {
+        Swal.fire({
+            title: 'Success!',
+            text: 'Payment successful! Your order has been placed.',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+        }).then(() => {
+            window.location.href = 'orders.php'; // Redirect to orders page
         });
-    
-    
-  }
+    },
+    error: function () {
+        Swal.fire({
+            title: 'Error!',
+            text: 'Payment successful, but order confirmation failed. Please contact support.',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+        });
+    }
+});
+
+        },
+        "prefill": {
+            "name": "<?php echo $user; ?>",
+            "email": "<?php echo $email; ?>"
+        },
+        "theme": {
+            "color": "#3399cc"
+        }
+    };
+
+    var rzp1 = new Razorpay(options);
+    rzp1.open(); // Opens Razorpay payment window
+}
 </script>
 
 </body>
