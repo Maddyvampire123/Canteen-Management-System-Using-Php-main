@@ -182,10 +182,7 @@ body{
                     <div class="container-fluid">
                         <div class="header-wrap">
                             <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for products &amp; price..." />
-                                <button class="au-btn--submit" type="submit">
-                                    <i class="zmdi zmdi-search"></i>
-                                </button>
+                              
                             </form>
 							<div class="title-3" align='right'>
 					
@@ -353,56 +350,69 @@ body{
     </script>
 
     <!-- Main JS-->
-    <script src="js/main.js"></script>
 
+    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="text/javascript">
 
-    function update(id)
-    { 
+function update(id) { 
     $.ajax({
-          type: "POST",
-          url: "update.php",
-          async: false,
-          data: {
-            id : id,
+        type: "POST",
+        url: "update.php",
+        async: false,
+        data: {
+            id: id,
             update: 1,
-          },
-          success: function(){
+        },
+        success: function() {
+            // You can put any additional logic on success if needed
+            Swal.fire({
+                title: 'Success!',
+                text: 'Menu Updated!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                // Redirect to the update menu page after user confirms
+                window.location.href = 'update_menu.php';
+            }2000);
             
-          },
- 
-        complete: function() {
-            // success alerts
-            alert('Menu Updated !');
-            window.location.href='update_menu.php';
-
+        },
+                complete: function() {
+            // Use SweetAlert2 for a success message
+            
         }
-        });
-    }
+    });
+}
 
-    function del(id)
-    { 
-    
+
+function del(id) { 
     $.ajax({
-          type: "POST",
-          url: "delete.php",
-          async: false,
-          data: {
-            id : id,
+        type: "POST",
+        url: "delete.php",
+        async: false,
+        data: {
+            id: id,
             delete: 1,
-          },
-          success: function(){
-            
-          },
- 
+        },
+        success: function() {
+            // Additional success logic can go here if needed
+            Swal.fire({
+                title: 'Success!',
+                text: 'Menu Deleted!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                // Redirect to the update menu page after user confirmation
+                window.location.href = 'update_menu.php';
+            });
+        },
         complete: function() {
-            // success alerts
-            alert('Menu Deleted !');
-            window.location.href='update_menu.php';
-
+            // Use SweetAlert2 for a success message
+            
         }
-        });
-    }
+    });
+}
+
 </script>
 
 </body>

@@ -177,10 +177,7 @@ body{
                     <div class="container-fluid">
                         <div class="header-wrap">
                             <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for products &amp; price..." />
-                                <button class="au-btn--submit" type="submit">
-                                    <i class="zmdi zmdi-search"></i>
-                                </button>
+                              
                             </form>
 							<div class="title-3" align='right'>
 							
@@ -291,10 +288,7 @@ body{
                     <th>Last Name</th>
                     <td ><?php echo $row['Last_Name'] ;?></td>
                     </tr>
-                    <tr>
-                    <th>Date of Birth</th>
-                    <td ><?php echo $row['Dob'] ;?></td>
-                    </tr>
+                    
                     <tr>
                     <th>Phone</th>
                     <td ><?php echo $row['Phone'] ;?></td>
